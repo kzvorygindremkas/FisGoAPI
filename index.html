@@ -38,10 +38,11 @@
 - 1212 [признак предмета расчёта]
 - 1030 [наименование предмета расчёта]
 - 1215 [сумма по чеку (БСО) предоплатой (зачётом аванса и (или) предыдущих платежей)]
-- 777 [сумма предоплаты на позицию] - системный тег - не содержится в ФФД
+- 777  [сумма предоплаты на позицию] - системный тег - не содержится в ФФД
 </code></pre>
-<h5 class="code-line" data-line-start=44 data-line-end=45 ><a id="_____44"></a>Банковский агент (позиция / чек)</h5>
-<pre><code class="has-line-data" data-line-start="46" data-line-end="79" class="language-json">{
+<h5 class="code-line" data-line-start=43 data-line-end=44 ><a id="_____43"></a>Банковский агент (позиция / чек)</h5>
+<p class="has-line-data" data-line-start="44" data-line-end="45">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
+<pre><code class="has-line-data" data-line-start="46" data-line-end="91" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
@@ -70,12 +71,25 @@
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1026</span></span>,
       "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Оператор перевода"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179453"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1225</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Наименование поставщика агента"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1226</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"999999999990"</span>
     </span>}
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=79 data-line-end=80 ><a id="______79"></a>Банковский платёжный субагент (позиция / чек)</h5>
-<pre><code class="has-line-data" data-line-start="81" data-line-end="114" class="language-json">{
+<h5 class="code-line" data-line-start=91 data-line-end=92 ><a id="______91"></a>Банковский платёжный субагент (позиция / чек)</h5>
+<p class="has-line-data" data-line-start="92" data-line-end="93">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
+<pre><code class="has-line-data" data-line-start="94" data-line-end="139" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
@@ -104,12 +118,25 @@
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1075</span></span>,
       "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179446"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179453"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1225</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Наименование поставщика агента"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1226</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"999999999990"</span>
     </span>}
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=114 data-line-end=115 ><a id="_____114"></a>Платёжный агент (позиция / чек)</h5>
-<pre><code class="has-line-data" data-line-start="116" data-line-end="133" class="language-json">{
+<h5 class="code-line" data-line-start=139 data-line-end=140 ><a id="_____139"></a>Платёжный агент (позиция / чек)</h5>
+<p class="has-line-data" data-line-start="140" data-line-end="141">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
+<pre><code class="has-line-data" data-line-start="142" data-line-end="171" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
@@ -122,12 +149,25 @@
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1074</span></span>,
       "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179448"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179453"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1225</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Наименование поставщика агента"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1226</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"999999999990"</span>
     </span>}
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=134 data-line-end=135 ><a id="_____134"></a>Платёжный субагент (позиция / чек)</h5>
-<pre><code class="has-line-data" data-line-start="136" data-line-end="153" class="language-json">{
+<h5 class="code-line" data-line-start=172 data-line-end=173 ><a id="_____172"></a>Платёжный субагент (позиция / чек)</h5>
+<p class="has-line-data" data-line-start="173" data-line-end="174">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
+<pre><code class="has-line-data" data-line-start="175" data-line-end="204" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
@@ -140,42 +180,93 @@
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1074</span></span>,
       "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179450"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179453"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1225</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Наименование поставщика агента"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1226</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"999999999990"</span>
     </span>}
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=153 data-line-end=154 ><a id="____153"></a>Поверенный (позиция / чек)</h5>
-<pre><code class="has-line-data" data-line-start="155" data-line-end="164" class="language-json">{
+<h5 class="code-line" data-line-start=204 data-line-end=205 ><a id="____204"></a>Поверенный (позиция / чек)</h5>
+<p class="has-line-data" data-line-start="205" data-line-end="206">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
+<pre><code class="has-line-data" data-line-start="207" data-line-end="228" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
       "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">16</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179453"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1225</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Наименование поставщика агента"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1226</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"999999999990"</span>
     </span>}
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=164 data-line-end=165 ><a id="____164"></a>Комиссионер (позиция / чек)</h5>
-<pre><code class="has-line-data" data-line-start="166" data-line-end="175" class="language-json">{
+<h5 class="code-line" data-line-start=228 data-line-end=229 ><a id="____228"></a>Комиссионер (позиция / чек)</h5>
+<p class="has-line-data" data-line-start="229" data-line-end="230">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
+<pre><code class="has-line-data" data-line-start="231" data-line-end="252" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
       "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">32</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179453"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1225</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Наименование поставщика агента"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1226</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"999999999990"</span>
     </span>}
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=175 data-line-end=176 ><a id="____175"></a>Агент (позиция / чек)</h5>
-<pre><code class="has-line-data" data-line-start="177" data-line-end="186" class="language-json">{
+<h5 class="code-line" data-line-start=252 data-line-end=253 ><a id="____252"></a>Агент (позиция / чек)</h5>
+<p class="has-line-data" data-line-start="253" data-line-end="254">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
+<pre><code class="has-line-data" data-line-start="255" data-line-end="276" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
       "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">64</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179453"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1225</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Наименование поставщика агента"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1226</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"999999999990"</span>
     </span>}
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=186 data-line-end=187 ><a id="_____186"></a>Данные поставщика (позиция / чек)</h5>
-<pre><code class="has-line-data" data-line-start="188" data-line-end="205" class="language-json">{
+<h5 class="code-line" data-line-start=276 data-line-end=277 ><a id="_____276"></a>Данные поставщика (позиция / чек)</h5>
+<pre><code class="has-line-data" data-line-start="279" data-line-end="296" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
@@ -192,8 +283,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=205 data-line-end=206 ><a id="__205"></a>Акциз (позиция)</h5>
-<pre><code class="has-line-data" data-line-start="207" data-line-end="224" class="language-json">{
+<h5 class="code-line" data-line-start=296 data-line-end=297 ><a id="__296"></a>Акциз (позиция)</h5>
+<pre><code class="has-line-data" data-line-start="299" data-line-end="316" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1229</span></span>,
@@ -210,8 +301,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=224 data-line-end=225 ><a id="___224"></a>Код товара (позиция)</h5>
-<pre><code class="has-line-data" data-line-start="226" data-line-end="235" class="language-json">{
+<h5 class="code-line" data-line-start=316 data-line-end=317 ><a id="___316"></a>Код товара (позиция)</h5>
+<pre><code class="has-line-data" data-line-start="319" data-line-end="328" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1162</span></span>,
@@ -220,8 +311,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=235 data-line-end=236 ><a id="_____235"></a>Дополнительный реквизит предмета расчёта (позиция)</h5>
-<pre><code class="has-line-data" data-line-start="237" data-line-end="246" class="language-json">{
+<h5 class="code-line" data-line-start=328 data-line-end=329 ><a id="_____328"></a>Дополнительный реквизит предмета расчёта (позиция)</h5>
+<pre><code class="has-line-data" data-line-start="331" data-line-end="340" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1191</span></span>,
@@ -230,8 +321,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=246 data-line-end=247 ><a id="____246"></a>Дополнительный реквизит пользователя (чек)</h5>
-<pre><code class="has-line-data" data-line-start="248" data-line-end="261" class="language-json">{
+<h5 class="code-line" data-line-start=340 data-line-end=341 ><a id="____340"></a>Дополнительный реквизит пользователя (чек)</h5>
+<pre><code class="has-line-data" data-line-start="343" data-line-end="356" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1085</span></span>,
@@ -244,8 +335,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=261 data-line-end=262 ><a id="_____261"></a>Дополнительный реквизит чека (БСО) (чек)</h5>
-<pre><code class="has-line-data" data-line-start="263" data-line-end="272" class="language-json">{
+<h5 class="code-line" data-line-start=356 data-line-end=357 ><a id="_____356"></a>Дополнительный реквизит чека (БСО) (чек)</h5>
+<pre><code class="has-line-data" data-line-start="359" data-line-end="368" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1192</span></span>,
@@ -254,8 +345,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=272 data-line-end=273 ><a id="____272"></a>Признак способа расчёта (позиция)</h5>
-<pre><code class="has-line-data" data-line-start="274" data-line-end="283" class="language-json">{
+<h5 class="code-line" data-line-start=368 data-line-end=369 ><a id="____368"></a>Признак способа расчёта (позиция)</h5>
+<pre><code class="has-line-data" data-line-start="371" data-line-end="380" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1214</span></span>,
@@ -264,8 +355,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=283 data-line-end=284 ><a id="_____283"></a>Признак способа расчёта (предоплата) (позиция)</h5>
-<pre><code class="has-line-data" data-line-start="285" data-line-end="298" class="language-json">{
+<h5 class="code-line" data-line-start=380 data-line-end=381 ><a id="_____380"></a>Признак способа расчёта (предоплата) (позиция)</h5>
+<pre><code class="has-line-data" data-line-start="383" data-line-end="396" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1214</span></span>,
@@ -278,8 +369,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=298 data-line-end=299 ><a id="____________298"></a>сумма по чеку (БСО) предоплатой (зачётом аванса и (или) предыдущих платежей) (чек)</h5>
-<pre><code class="has-line-data" data-line-start="300" data-line-end="309" class="language-json">{
+<h5 class="code-line" data-line-start=396 data-line-end=397 ><a id="____________396"></a>сумма по чеку (БСО) предоплатой (зачётом аванса и (или) предыдущих платежей) (чек)</h5>
+<pre><code class="has-line-data" data-line-start="399" data-line-end="408" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1215</span></span>,
@@ -288,6 +379,388 @@
   ]
 </span>}
 </code></pre>
-<p class="has-line-data" data-line-start="309" data-line-end="310"><strong>Dreamkas, Saint-Petersburg, Russia 19.12.2019</strong></p>
+<h5 class="code-line" data-line-start=408 data-line-end=409 ><a id="_____408"></a>Покупатель и ИНН покупателя (чек)</h5>
+<pre><code class="has-line-data" data-line-start="411" data-line-end="424" class="language-json">{
+  "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1227</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Покупатель"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1228</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"123456789012"</span>
+    </span>}
+  ]
+</span>}
+</code></pre>
+<h5 class="code-line" data-line-start=424 data-line-end=425 ><a id="__________424"></a>Тестовый пример, включающий все поддерживаемые тэги ФФД в одном чеке</h5>
+<pre><code class="has-line-data" data-line-start="427" data-line-end="794" class="language-json">{
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
+  "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"CASHLESS"</span></span>,
+      "<span class="hljs-attribute">sum</span>": <span class="hljs-value"><span class="hljs-number">1105</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">96666</span></span>,
+  "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+  "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"m.savchenko@dreamkas.ru"</span></span>,
+    "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79101179441"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">1300</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">positions</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"С банковским агентом"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179442"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1225</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Наименование поставщика банковского агента"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1226</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"111111111112"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1044</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"ОП.ПЛ АГЕНТА"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1005</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Адрес оператора перевода"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1016</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"222222222223"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1073</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179443"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1075</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179444"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1026</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Оператор перевода"</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"С банковским платёжным субагентом"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179445"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1225</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Наименование поставщика банковского платёжного субагента"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1226</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"333333333334"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1073</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179445"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1044</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"ОП.ПЛ АГЕНТА"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1005</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Адрес оператора перевода"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1016</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"444444444445"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1026</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Оператор перевода"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1075</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179446"</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"С платёжным агентом"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">4</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179447"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1225</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Наименование поставщика платёжного агента"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1226</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"555555555556"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1073</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179447"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1074</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179448"</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"С платёжным субагентом"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">8</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179449"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1225</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Наименование поставщика платёжного субагента"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1226</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"666666666667"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1073</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179449"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1074</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179450"</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"С поверенным"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">16</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179451"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1226</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"777777777778"</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"С комиссионером"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">32</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179452"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1225</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Наименование поставщика комиссионера"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1226</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"888888888889"</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"С агентом"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">64</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"+79101179453"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1225</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Наименование поставщика агента"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1226</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"999999999990"</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SERVICE"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"С акцизом"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1229</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">3</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1230</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"123"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1231</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Код 123"</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SHOES"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"С кодом товара"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1162</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"1520043f52d350383277666C345066453973707575"</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SERVICE"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"С дополнительным реквизитом"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1191</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Доп. рек. позиции"</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Предоплата 100%"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1214</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Предоплата"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1214</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">777</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">5</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SERVICE"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Без тегов"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"SIMPLE_WO"</span></span>,
+  "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1085</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Доп. рек. пользователя"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1086</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Значение доп. рек. пользователя"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1192</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Доп. реквизит чека (БСО)"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1227</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Савченко Михаил Андреевич"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1228</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"123456789012"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1215</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">100</span>
+    </span>}
+  ]
+</span>}
+</code></pre>
+<p class="has-line-data" data-line-start="795" data-line-end="796"><strong>Dreamkas, Saint-Petersburg, Russia 19.12.2019</strong></p>
 
 </body></html>
