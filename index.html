@@ -17,113 +17,390 @@
   </span>}
 </span>}
 </code></pre>
+<h4 class="code-line" data-line-start=23 data-line-end=24 ><a id="__23"></a>Описание полей</h4>
 <pre><code>Ниже приведены массивы, структуры и поля, участвующие в парсе внешнего чека.
-Обязательность, точные наименования и формат полей педставлена в API Кабинета Дримкас.
+Обязательность, точные наименования и формат полей представлена в API Кабинета Дримкас.
+[ARRAY]     массив
+[STRUCT]    структура полей
+[STRING]    текстовое поле
+[INT]       целочисленное поле
 
-
-[&quot;type&quot;]                        [STRING]    [Тип чека]
-    [&quot;SALE&quot;]                                [приход]
-    [&quot;REFUND&quot;]                              [возврат прихода]
-    [&quot;OUTFLOW&quot;]                             [расход]
-    [&quot;OUTFLOW_REFUND&quot;]                      [возврат расхода]
-
-
-[&quot;taxMode&quot;]                     [STRING]    [Система налогообложения (СНО)]
-    [&quot;DEFAULT&quot;]                             [общая]
-    [&quot;SIMPLE&quot;]                              [упрощенная доход]
-    [&quot;SIMPLE_WO&quot;]                           [упрощенная доход минус расход]
-    [&quot;ENVD&quot;]                                [единый налог на вменённый доход]
-    [&quot;AGRICULT&quot;]                            [единый сельскохозяйственный налог]
-    [&quot;PATENT&quot;]                              [патентная система налогообложения]
-
-
-[&quot;positions&quot;]                               [Список позиций чека]
-    [&quot;rem_id&quot;]                  [STRING]    [ID товара в кабинете]
-    [&quot;name&quot;]                    [STRING]    [Наименование предмета расчета]
-    [&quot;type&quot;]                    [STRING]    [Тип товара]
-        [&quot;COUNTABLE&quot;]                       [Штучный]
-        [&quot;SCALABLE&quot;]                        [Весовой]
-        [&quot;CLOTHES&quot;]                         [Одежда]
-        [&quot;SHOES&quot;]                           [Обувь]
-        [&quot;SERVICE&quot;]                         [Услуга]
-    [&quot;tags&quot;]                                [Список тэгов ФФД (позиция)]
-        [1171]                  [STRING]                                                            [телефон поставщика]
-        [1225]                  [STRING]    [наименование поставщика]
-        [1226]                  [STRING]    [ИНН поставщика]
-        [1229]                  [INT]       [акциз]
-        [1230]                  [STRING]    [код страны товара]
-        [1231]                  [STRING]    [код таможенной декларации]
-        [1057]                  [INT]       [признак агента]
-        [1044]                  [STRING]    [операция платёжного агента]
-        [1005]                  [STRING]    [адрес оператора перевода]
-        [1016]                  [STRING]    [ИНН оператора перевода]
-        [1075]                  [STRING]    [телефон оператора перевода]
-        [1073]                  [STRING]    [телефон платёжного агента]
-        [1026]                  [STRING]    [наименование оператора перевода]
-        [1074]                  [STRING]    [телефон оператора по приёму платежей]
-        [1162]                  [STRING]    [код товара]
-        [1191]                  [STRING]    [дополнительный реквизит предмета расчёта]
-        [1214]                  [INT]       [признак способа расчёта]
-        [1212]                  [INT]       [признак предмета расчёта]
-        [1030]                  [STRING]    [наименование предмета расчёта]
-        [777]                   [INT]       [сумма предоплаты на позицию] - системный тег - не содержится в ФФД
-    [&quot;quantity&quot;]                [INT]       [Количество предмета расчета]
-    [&quot;price&quot;]                   [INT]       [Цена за еденицу расчета в копейках]
-    [&quot;total&quot;]                   [INT]       [Стоимость предмета расчета в копейках]
-    [&quot;tax&quot;]                     [STRING]    [НДС за еденицу предмета расчета]
-        [&quot;NDS_NO_TAX&quot;]                      [Без НДС]
-        [&quot;NDS_0&quot;]                           [НДС 0%]
-        [&quot;NDS_10&quot;]                          [НДС 10%]
-        [&quot;NDS_20&quot;]                          [НДС 20%]
-        [&quot;NDS_10_CALCULATED&quot;]               [НДС Расчетная 10%]
-        [&quot;NDS_20_CALCULATED&quot;]               [НДС Расчетная 20%]
-    [&quot;tax_sum&quot;]                 [INT]       [Сумма НДС за предмет расчета ]
-    
-    
-[&quot;payments&quot;]                    [Список платежей (*поддерживается только один вид платежа на чек)]
-    [&quot;sum&quot;]                     [INT]       [Оплата в копейках]
-    [&quot;type&quot;]                    [STRING]    [Тип оплаты]
-        [&quot;CASH&quot;]                            [Наличный расчет]
-        [&quot;CASHLESS&quot;]                        [Безналичный расчет]
-        [&quot;PREPAID&quot;]                         [Аванс]
-        [&quot;CREDIT&quot;]                          [Кредит]
-        [&quot;CONSIDERATION&quot;]                   [Встречное предоставление]
-
-[&quot;attributes&quot;]                  [Данные покупателя]
-    [&quot;phone&quot;]                   [STRING]    [Телефонный номер. Шаблон - +\d{11}]
-    [&quot;email&quot;]                   [STRING]    [Электронная почта. Шаблон - .+@..+]
-
-
-[&quot;total&quot;]                       [Итог чека]
-    [&quot;total_sum&quot;]               [INT]       [итоговая сумма в копейках]
-    [&quot;taxes_sum&quot;]               [STRING]    [Сумма примененных НДС в копейках, сгруппированных по типу]
-        [&quot;NDS_10&quot;]                          [НДС 10%]
-        [&quot;NDS_18&quot;]                          [НДС 20%]
-        [&quot;NDS_10_CALCULATED&quot;]               [НДС Расчетная 10%]
-        [&quot;NDS_18_CALCULATED&quot;]               [НДС Расчетная 20%]
-
-
-[&quot;tags&quot;]                        [Список тэгов ФФД (чек)]
-    [1171]                      [STRING]    [телефон поставщика]
-    [1225]                      [STRING]    [наименование поставщика]
-    [1226]                      [STRING]    [ИНН поставщика]
-    [1057]                      [INT]       [признак агента]
-    [1044]                      [STRING]    [операция платёжного агента]
-    [1005]                      [STRING]    [адрес оператора перевода]
-    [1016]                      [STRING]    [ИНН оператора перевода]
-    [1075]                      [STRING]    [телефон оператора перевода]
-    [1073]                      [STRING]    [телефон платёжного агента]
-    [1026]                      [STRING]    [наименование оператора перевода]
-    [1074]                      [STRING]    [телефон оператора по приёму платежей]
-    [1227]                      [STRING]    [покупатель]
-    [1228]                      [STRING]    [ИНН покупателя]
-    [1085]                      [STRING]    [наименование дополнительного реквизита пользователя]
-    [1086]                      [STRING]    [значение дополнительного реквизита пользователя]
-    [1192]                      [STRING]    [дополнительный реквизит чека (БСО)]
-    [1215]                      [INT]       [сумма по чеку (БСО) предоплатой (зачётом аванса и (или) предыдущих платежей)]
+[R]         (required) обязательное поле
+</code></pre>
+<blockquote></blockquote>
+<pre><code>[&quot;type&quot;]                        [STRING]    [R]     [Тип чека]
+    [&quot;SALE&quot;]                                        [приход]
+    [&quot;REFUND&quot;]                                      [возврат прихода]
+    [&quot;OUTFLOW&quot;]                                     [расход]
+    [&quot;OUTFLOW_REFUND&quot;]                              [возврат расхода]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>[&quot;taxMode&quot;]                     [STRING]            [Система налогообложения (СНО)]
+    [&quot;DEFAULT&quot;]                                     [общая]
+    [&quot;SIMPLE&quot;]                                      [упрощенная доход]
+    [&quot;SIMPLE_WO&quot;]                                   [упрощенная доход минус расход]
+    [&quot;ENVD&quot;]                                        [единый налог на вменённый доход]
+    [&quot;AGRICULT&quot;]                                    [единый сельскохозяйственный налог]
+    [&quot;PATENT&quot;]                                      [патентная система налогообложения]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>[&quot;positions&quot;]                   [ARRAY]     [R]     [Список позиций чека]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>    [&quot;rem_id&quot;]                  [STRING]            [ID товара в кабинете]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>    [&quot;name&quot;]                    [STRING]    [R]     [Наименование предмета расчета]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>    [&quot;type&quot;]                    [STRING]    [R]     [Тип товара]&gt;
+        [&quot;COUNTABLE&quot;]                               [Штучный]
+        [&quot;SCALABLE&quot;]                                [Весовой]
+        [&quot;SHOES&quot;]                                   [Обувь]
+        [&quot;SERVICE&quot;]                                 [Услуга]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>    [&quot;tags&quot;]                    [ARRAY]             [Список тэгов ФФД (позиция)]
+        [1171]                  [STRING]            [телефон поставщика]
+        [1225]                  [STRING]            [наименование поставщика]
+        [1226]                  [STRING]            [ИНН поставщика]
+        [1229]                  [INT]               [акциз]
+        [1230]                  [STRING]            [код страны товара]
+        [1231]                  [STRING]            [код таможенной декларации]
+        [1057]                  [INT]               [признак агента]
+        [1044]                  [STRING]            [операция платёжного агента]
+        [1005]                  [STRING]            [адрес оператора перевода]
+        [1016]                  [STRING]            [ИНН оператора перевода]
+        [1075]                  [STRING]            [телефон оператора перевода]
+        [1073]                  [STRING]            [телефон платёжного агента]
+        [1026]                  [STRING]            [наименование оператора перевода]
+        [1074]                  [STRING]            [телефон оператора по приёму платежей]
+        [1162]                  [STRING]            [код товара]
+        [1191]                  [STRING]            [дополнительный реквизит предмета расчёта]
+        [1214]                  [INT]               [признак способа расчёта]
+        [1212]                  [INT]               [признак предмета расчёта]
+        [1030]                  [STRING]            [наименование предмета расчёта]
+        [777]                   [INT]               [сумма предоплаты на позицию
+                                                    *системный тег, не содержится в ФФД]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>    [&quot;quantity&quot;]                [INT]       [R]     [Количество предмета расчета]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>    [&quot;price&quot;]                   [INT]       [R]     [Цена за еденицу расчета в копейках]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>    [&quot;total&quot;]                   [INT]               [Стоимость предмета расчета в копейках]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>    [&quot;tax&quot;]                     [STRING]            [НДС за еденицу предмета расчета]
+        [&quot;NDS_NO_TAX&quot;]                              [Без НДС]
+        [&quot;NDS_0&quot;]                                   [НДС 0%]
+        [&quot;NDS_10&quot;]                                  [НДС 10%]
+        [&quot;NDS_20&quot;]                                  [НДС 20%]
+        [&quot;NDS_10_CALCULATED&quot;]                       [НДС Расчетная 10%]
+        [&quot;NDS_20_CALCULATED&quot;]                       [НДС Расчетная 20%]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>    [&quot;tax_sum&quot;]                 [INT]               [Сумма НДС за предмет расчета ]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>[&quot;payments&quot;]                    [ARRAY]     [R]     [Список платежей 
+                                                    (*поддерживается только один вид платежа на чек)]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>    [&quot;sum&quot;]                     [INT]       [R]     [Оплата в копейках]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>    [&quot;type&quot;]                    [STRING]            [Тип оплаты]
+        [&quot;CASH&quot;]                                    [Наличный расчет]
+        [&quot;CASHLESS&quot;]                                [Безналичный расчет]
+        [&quot;PREPAID&quot;]                                 [Аванс]
+        [&quot;CREDIT&quot;]                                  [Кредит]
+        [&quot;CONSIDERATION&quot;]                           [Встречное предоставление]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>[&quot;attributes&quot;]                  [STRUCT]            [Данные покупателя]
+    [&quot;phone&quot;]                   [STRING]            [Телефонный номер. Шаблон - +\d{11}]
+    [&quot;email&quot;]                   [STRING]            [Электронная почта. Шаблон - .+@..+]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>[&quot;total&quot;]                       [STRUCT]    [R]     [Итог чека]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>    [&quot;total_sum&quot;]               [INT]       [R]     [итоговая сумма в копейках]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>    [&quot;taxes_sum&quot;]               [STRING]            [Сумма примененных НДС в копейках, 
+                                                    сгруппированных по типу]
+        [&quot;NDS_10&quot;]                                  [НДС 10%]
+        [&quot;NDS_18&quot;]                                  [НДС 20%]
+        [&quot;NDS_10_CALCULATED&quot;]                       [НДС Расчетная 10%]
+        [&quot;NDS_20_CALCULATED&quot;]                       [НДС Расчетная 20%]
+</code></pre>
+<blockquote></blockquote>
+<pre><code>[&quot;tags&quot;]                        [ARRAY]             [Список тэгов ФФД (чек)]
+    [1171]                      [STRING]            [телефон поставщика]
+    [1225]                      [STRING]            [наименование поставщика]
+    [1226]                      [STRING]            [ИНН поставщика]
+    [1057]                      [INT]               [признак агента]
+    [1044]                      [STRING]            [операция платёжного агента]
+    [1005]                      [STRING]            [адрес оператора перевода]
+    [1016]                      [STRING]            [ИНН оператора перевода]
+    [1075]                      [STRING]            [телефон оператора перевода]
+    [1073]                      [STRING]            [телефон платёжного агента]
+    [1026]                      [STRING]            [наименование оператора перевода]
+    [1074]                      [STRING]            [телефон оператора по приёму платежей]
+    [1227]                      [STRING]            [покупатель]
+    [1228]                      [STRING]            [ИНН покупателя]
+    [1085]                      [STRING]            [наименование дополнительного реквизита пользователя]
+    [1086]                      [STRING]            [значение дополнительного реквизита пользователя]
+    [1192]                      [STRING]            [дополнительный реквизит чека (БСО)]
+    [1215]                      [INT]               [сумма по чеку (БСО) предоплатой 
+                                                    (зачётом аванса и (или) предыдущих платежей)]
+</code></pre>
+<blockquote></blockquote>
+<h4 class="code-line" data-line-start=145 data-line-end=146 ><a id="_145"></a>Примеры</h4>
+<blockquote>
+<p class="has-line-data" data-line-start="146" data-line-end="152">Тип операции: приход<br>
+Тип оплаты: безналичными<br>
+Данные покупателя содержат тел. номер и email покупателя<br>
+Тип товара: штучный<br>
+Тип НДС: без НДС<br>
+CНО: Общая</p>
+</blockquote>
+<pre><code class="has-line-data" data-line-start="154" data-line-end="183" class="language-json">{
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
+  "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"CASHLESS"</span></span>,
+      "<span class="hljs-attribute">sum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
+  "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+  "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fisgo@dreamkas.ru"</span></span>,
+    "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">positions</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Штучный товар"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"DEFAULT"</span>
+</span>}
 </code></pre>
 <blockquote>
-<p class="has-line-data" data-line-start="127" data-line-end="132">Ниже представлены примеры json массивов с поддерживаемыми реквизитами (тэгами ФФД)<br>
+<p class="has-line-data" data-line-start="183" data-line-end="189">Тип операции: расход<br>
+Тип оплаты: наличными<br>
+Данные покупателя содержат тел. номер<br>
+Тип товара: весовой<br>
+Тип НДС: НДС 10%<br>
+CНО: Упрощённая доход</p>
+</blockquote>
+<pre><code class="has-line-data" data-line-start="190" data-line-end="218" class="language-json">{
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"OUTFLOW"</span></span>,
+  "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"CASH"</span></span>,
+      "<span class="hljs-attribute">sum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
+  "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+  "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">positions</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Весовой товар"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">2000</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SCALABLE"</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_10"</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"SIMPLE"</span>
+</span>}
+</code></pre>
+<blockquote>
+<p class="has-line-data" data-line-start="218" data-line-end="224">Тип операции: возврат прихода<br>
+Тип оплаты: аванс<br>
+Данные покупателя содержат email покупателя<br>
+Тип товара: обувь<br>
+Тип НДС: НДС 0%<br>
+CНО: Упрощенная доход минус расход</p>
+</blockquote>
+<pre><code class="has-line-data" data-line-start="225" data-line-end="253" class="language-json">{
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"REFUND"</span></span>,
+  "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"PREPAID"</span></span>,
+      "<span class="hljs-attribute">sum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
+  "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+  "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fisgo@dreamkas.ru"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">positions</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Обувь"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SHOES"</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_0"</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"SIMPLE_WO"</span>
+</span>}
+</code></pre>
+<blockquote>
+<p class="has-line-data" data-line-start="253" data-line-end="259">Тип операции: возврат расхода<br>
+Тип оплаты: кредит<br>
+Данные покупателя содержат email покупателя<br>
+Тип товара: услуга<br>
+Тип НДС: НДС 20%<br>
+CНО: Единый налог на вмененный доход</p>
+</blockquote>
+<pre><code class="has-line-data" data-line-start="260" data-line-end="288" class="language-json">{
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"OUTFLOW_REFUND"</span></span>,
+  "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"CREDIT"</span></span>,
+      "<span class="hljs-attribute">sum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
+  "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+  "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fisgo@dreamkas.ru"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">positions</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Услуга"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SERVICE"</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_20"</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"ENVD"</span>
+</span>}
+</code></pre>
+<blockquote>
+<p class="has-line-data" data-line-start="288" data-line-end="294">Тип операции: приход<br>
+Тип оплаты: встречное предоставление<br>
+Данные покупателя содержат email покупателя<br>
+Тип товара: штучный<br>
+Тип НДС: НДС Расчетная 10%<br>
+CНО: Единый сельскохозяйственный налог</p>
+</blockquote>
+<pre><code class="has-line-data" data-line-start="295" data-line-end="323" class="language-json">{
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
+  "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"CONSIDERATION"</span></span>,
+      "<span class="hljs-attribute">sum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
+  "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+  "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fisgo@dreamkas.ru"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">positions</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Штучный товар"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_10_CALCULATED"</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"AGRICULT"</span>
+</span>}
+</code></pre>
+<blockquote>
+<p class="has-line-data" data-line-start="323" data-line-end="329">Тип операции: приход<br>
+Тип оплаты: безналичными<br>
+Данные покупателя содержат email покупателя<br>
+Тип товара: штучный, весовой, обувь, услуга<br>
+Тип НДС: НДС 10%, НДС 20%, НДС расчётная 10%, НДС расчётная 20%<br>
+CНО: Патентная система налогообложения</p>
+</blockquote>
+<pre><code class="has-line-data" data-line-start="330" data-line-end="379" class="language-json">{
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
+  "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"CASHLESS"</span></span>,
+      "<span class="hljs-attribute">sum</span>": <span class="hljs-value"><span class="hljs-number">800</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
+  "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+  "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fisgo@dreamkas.ru"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">800</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">positions</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Штучный товар"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_10"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Весовой товар"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">2000</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SCALABLE"</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_20"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Обувь"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SHOES"</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_10_CALCULATED"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Услуга"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SERVICE"</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_20_CALCULATED"</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"PATENT"</span>
+</span>}
+</code></pre>
+<blockquote>
+<p class="has-line-data" data-line-start="379" data-line-end="384">Ниже представлены примеры json массивов с поддерживаемыми реквизитами (тэгами ФФД)<br>
 Каждый пример содержит хотя бы один тэг ФФД<br>
 В чеке может присутствовать несолько тэгов ФФД<br>
 Тэги могут присутствовать как в теле чека, так и в теле конкретной позиции<br>
@@ -157,9 +434,9 @@
 - 1215 [сумма по чеку (БСО) предоплатой (зачётом аванса и (или) предыдущих платежей)]
 - 777  [сумма предоплаты на позицию] - системный тег - не содержится в ФФД
 </code></pre>
-<h5 class="code-line" data-line-start=160 data-line-end=161 ><a id="_____160"></a>Банковский агент (позиция / чек)</h5>
-<p class="has-line-data" data-line-start="161" data-line-end="162">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
-<pre><code class="has-line-data" data-line-start="163" data-line-end="208" class="language-json">{
+<h5 class="code-line" data-line-start=412 data-line-end=413 ><a id="_____412"></a>Банковский агент (позиция / чек)</h5>
+<p class="has-line-data" data-line-start="413" data-line-end="414">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
+<pre><code class="has-line-data" data-line-start="415" data-line-end="460" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
@@ -204,9 +481,9 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=208 data-line-end=209 ><a id="______208"></a>Банковский платёжный субагент (позиция / чек)</h5>
-<p class="has-line-data" data-line-start="209" data-line-end="210">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
-<pre><code class="has-line-data" data-line-start="211" data-line-end="256" class="language-json">{
+<h5 class="code-line" data-line-start=460 data-line-end=461 ><a id="______460"></a>Банковский платёжный субагент (позиция / чек)</h5>
+<p class="has-line-data" data-line-start="461" data-line-end="462">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
+<pre><code class="has-line-data" data-line-start="463" data-line-end="508" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
@@ -251,9 +528,9 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=256 data-line-end=257 ><a id="_____256"></a>Платёжный агент (позиция / чек)</h5>
-<p class="has-line-data" data-line-start="257" data-line-end="258">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
-<pre><code class="has-line-data" data-line-start="259" data-line-end="288" class="language-json">{
+<h5 class="code-line" data-line-start=508 data-line-end=509 ><a id="_____508"></a>Платёжный агент (позиция / чек)</h5>
+<p class="has-line-data" data-line-start="509" data-line-end="510">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
+<pre><code class="has-line-data" data-line-start="511" data-line-end="540" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
@@ -282,9 +559,9 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=289 data-line-end=290 ><a id="_____289"></a>Платёжный субагент (позиция / чек)</h5>
-<p class="has-line-data" data-line-start="290" data-line-end="291">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
-<pre><code class="has-line-data" data-line-start="292" data-line-end="321" class="language-json">{
+<h5 class="code-line" data-line-start=541 data-line-end=542 ><a id="_____541"></a>Платёжный субагент (позиция / чек)</h5>
+<p class="has-line-data" data-line-start="542" data-line-end="543">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
+<pre><code class="has-line-data" data-line-start="544" data-line-end="573" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
@@ -313,9 +590,9 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=321 data-line-end=322 ><a id="____321"></a>Поверенный (позиция / чек)</h5>
-<p class="has-line-data" data-line-start="322" data-line-end="323">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
-<pre><code class="has-line-data" data-line-start="324" data-line-end="345" class="language-json">{
+<h5 class="code-line" data-line-start=573 data-line-end=574 ><a id="____573"></a>Поверенный (позиция / чек)</h5>
+<p class="has-line-data" data-line-start="574" data-line-end="575">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
+<pre><code class="has-line-data" data-line-start="576" data-line-end="597" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
@@ -336,9 +613,9 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=345 data-line-end=346 ><a id="____345"></a>Комиссионер (позиция / чек)</h5>
-<p class="has-line-data" data-line-start="346" data-line-end="347">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
-<pre><code class="has-line-data" data-line-start="348" data-line-end="369" class="language-json">{
+<h5 class="code-line" data-line-start=597 data-line-end=598 ><a id="____597"></a>Комиссионер (позиция / чек)</h5>
+<p class="has-line-data" data-line-start="598" data-line-end="599">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
+<pre><code class="has-line-data" data-line-start="600" data-line-end="621" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
@@ -359,9 +636,9 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=369 data-line-end=370 ><a id="____369"></a>Агент (позиция / чек)</h5>
-<p class="has-line-data" data-line-start="370" data-line-end="371">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
-<pre><code class="has-line-data" data-line-start="372" data-line-end="393" class="language-json">{
+<h5 class="code-line" data-line-start=621 data-line-end=622 ><a id="____621"></a>Агент (позиция / чек)</h5>
+<p class="has-line-data" data-line-start="622" data-line-end="623">Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171), наименование поставщика (1225) - опционально.</p>
+<pre><code class="has-line-data" data-line-start="624" data-line-end="645" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1057</span></span>,
@@ -382,8 +659,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=393 data-line-end=394 ><a id="_____393"></a>Данные поставщика (позиция / чек)</h5>
-<pre><code class="has-line-data" data-line-start="396" data-line-end="413" class="language-json">{
+<h5 class="code-line" data-line-start=645 data-line-end=646 ><a id="_____645"></a>Данные поставщика (позиция / чек)</h5>
+<pre><code class="has-line-data" data-line-start="648" data-line-end="665" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1171</span></span>,
@@ -400,8 +677,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=413 data-line-end=414 ><a id="__413"></a>Акциз (позиция)</h5>
-<pre><code class="has-line-data" data-line-start="416" data-line-end="433" class="language-json">{
+<h5 class="code-line" data-line-start=665 data-line-end=666 ><a id="__665"></a>Акциз (позиция)</h5>
+<pre><code class="has-line-data" data-line-start="668" data-line-end="685" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1229</span></span>,
@@ -418,8 +695,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=433 data-line-end=434 ><a id="___433"></a>Код товара (позиция)</h5>
-<pre><code class="has-line-data" data-line-start="436" data-line-end="445" class="language-json">{
+<h5 class="code-line" data-line-start=685 data-line-end=686 ><a id="___685"></a>Код товара (позиция)</h5>
+<pre><code class="has-line-data" data-line-start="688" data-line-end="697" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1162</span></span>,
@@ -428,8 +705,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=445 data-line-end=446 ><a id="_____445"></a>Дополнительный реквизит предмета расчёта (позиция)</h5>
-<pre><code class="has-line-data" data-line-start="448" data-line-end="457" class="language-json">{
+<h5 class="code-line" data-line-start=697 data-line-end=698 ><a id="_____697"></a>Дополнительный реквизит предмета расчёта (позиция)</h5>
+<pre><code class="has-line-data" data-line-start="700" data-line-end="709" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1191</span></span>,
@@ -438,8 +715,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=457 data-line-end=458 ><a id="____457"></a>Дополнительный реквизит пользователя (чек)</h5>
-<pre><code class="has-line-data" data-line-start="460" data-line-end="473" class="language-json">{
+<h5 class="code-line" data-line-start=709 data-line-end=710 ><a id="____709"></a>Дополнительный реквизит пользователя (чек)</h5>
+<pre><code class="has-line-data" data-line-start="712" data-line-end="725" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1085</span></span>,
@@ -452,8 +729,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=473 data-line-end=474 ><a id="_____473"></a>Дополнительный реквизит чека (БСО) (чек)</h5>
-<pre><code class="has-line-data" data-line-start="476" data-line-end="485" class="language-json">{
+<h5 class="code-line" data-line-start=725 data-line-end=726 ><a id="_____725"></a>Дополнительный реквизит чека (БСО) (чек)</h5>
+<pre><code class="has-line-data" data-line-start="728" data-line-end="737" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1192</span></span>,
@@ -462,32 +739,156 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=485 data-line-end=486 ><a id="____485"></a>Признак способа расчёта (позиция)</h5>
-<pre><code class="has-line-data" data-line-start="488" data-line-end="497" class="language-json">{
-  "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+<h5 class="code-line" data-line-start=737 data-line-end=738 ><a id="____100__737"></a>Признак способа расчёта (предоплата 100 %)(позиция)</h5>
+<pre><code class="has-line-data" data-line-start="739" data-line-end="774" class="language-json">{
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
+  "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
-      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1214</span></span>,
-      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"CASHLESS"</span></span>,
+      "<span class="hljs-attribute">sum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
     </span>}
-  ]
+  ]</span>,
+  "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
+  "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+  "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fisgo@dreamkas.ru"</span></span>,
+    "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">positions</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Предоплата 100%"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1214</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+        </span>}
+      ]
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"DEFAULT"</span>
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=497 data-line-end=498 ><a id="_____497"></a>Признак способа расчёта (предоплата) (позиция)</h5>
-<pre><code class="has-line-data" data-line-start="500" data-line-end="513" class="language-json">{
-  "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+<h5 class="code-line" data-line-start=774 data-line-end=775 ><a id="_____774"></a>Признак способа расчёта (предоплата) (позиция)</h5>
+<pre><code class="has-line-data" data-line-start="776" data-line-end="815" class="language-json">{
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
+  "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
-      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1214</span></span>,
-      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">2</span>
-    </span>},
-    {
-      "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">777</span></span>,
-      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">5000</span>
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"CASHLESS"</span></span>,
+      "<span class="hljs-attribute">sum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
     </span>}
-  ]
+  ]</span>,
+  "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
+  "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+  "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fisgo@dreamkas.ru"</span></span>,
+    "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">positions</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Предоплата"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1214</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">777</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">100</span>
+        </span>}
+      ]
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"DEFAULT"</span>
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=513 data-line-end=514 ><a id="____________513"></a>сумма по чеку (БСО) предоплатой (зачётом аванса и (или) предыдущих платежей) (чек)</h5>
-<pre><code class="has-line-data" data-line-start="516" data-line-end="525" class="language-json">{
+<h5 class="code-line" data-line-start=815 data-line-end=816 ><a id="____815"></a>Признак способа расчёта (аванс)(позиция)</h5>
+<pre><code class="has-line-data" data-line-start="817" data-line-end="852" class="language-json">{
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
+  "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"CASHLESS"</span></span>,
+      "<span class="hljs-attribute">sum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
+  "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+  "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fisgo@dreamkas.ru"</span></span>,
+    "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">positions</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Аванс"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1214</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">3</span>
+        </span>}
+      ]
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"DEFAULT"</span>
+</span>}
+</code></pre>
+<h5 class="code-line" data-line-start=852 data-line-end=853 ><a id="_____852"></a>Признак способа расчёта (полный расчёт)(позиция)</h5>
+<pre><code class="has-line-data" data-line-start="854" data-line-end="889" class="language-json">{
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
+  "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"CASHLESS"</span></span>,
+      "<span class="hljs-attribute">sum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
+  "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+  "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fisgo@dreamkas.ru"</span></span>,
+    "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">positions</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Полный расчёт"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span></span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1214</span></span>,
+          "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">4</span>
+        </span>}
+      ]
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"DEFAULT"</span>
+</span>}
+</code></pre>
+<h5 class="code-line" data-line-start=889 data-line-end=890 ><a id="____________889"></a>сумма по чеку (БСО) предоплатой (зачётом аванса и (или) предыдущих платежей) (чек)</h5>
+<pre><code class="has-line-data" data-line-start="892" data-line-end="901" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1215</span></span>,
@@ -496,8 +897,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=525 data-line-end=526 ><a id="_____525"></a>Покупатель и ИНН покупателя (чек)</h5>
-<pre><code class="has-line-data" data-line-start="528" data-line-end="541" class="language-json">{
+<h5 class="code-line" data-line-start=901 data-line-end=902 ><a id="_____901"></a>Покупатель и ИНН покупателя (чек)</h5>
+<pre><code class="has-line-data" data-line-start="904" data-line-end="917" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1227</span></span>,
@@ -510,8 +911,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=541 data-line-end=542 ><a id="________541"></a>Признак предмета расчёта и наименование предмета расчёта (позиция)</h5>
-<pre><code class="has-line-data" data-line-start="544" data-line-end="557" class="language-json">{
+<h5 class="code-line" data-line-start=917 data-line-end=918 ><a id="________917"></a>Признак предмета расчёта и наименование предмета расчёта (позиция)</h5>
+<pre><code class="has-line-data" data-line-start="920" data-line-end="933" class="language-json">{
   "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1212</span></span>,
@@ -524,8 +925,8 @@
   ]
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=557 data-line-end=558 ><a id="__________557"></a>Тестовый пример, включающий все поддерживаемые тэги ФФД в одном чеке</h5>
-<pre><code class="has-line-data" data-line-start="560" data-line-end="944" class="language-json">{
+<h5 class="code-line" data-line-start=933 data-line-end=934 ><a id="__________933"></a>Тестовый пример, включающий все поддерживаемые тэги ФФД в одном чеке</h5>
+<pre><code class="has-line-data" data-line-start="936" data-line-end="1320" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -536,7 +937,7 @@
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">96666</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"m.savchenko@dreamkas.ru"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fisgo@dreamkas.ru"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79101179441"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -909,6 +1310,6 @@
   ]
 </span>}
 </code></pre>
-<p class="has-line-data" data-line-start="945" data-line-end="946"><strong>Dreamkas, Saint-Petersburg, Russia 19.12.2019</strong></p>
+<p class="has-line-data" data-line-start="1321" data-line-end="1322"><strong>Dreamkas, Saint-Petersburg, Russia 19.12.2019</strong></p>
 
 </body></html>
