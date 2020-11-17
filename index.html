@@ -121,7 +121,7 @@
 <blockquote></blockquote>
 <pre><code>[&quot;attributes&quot;]                  [STRUCT]            [Данные покупателя]
     [&quot;phone&quot;]                   [STRING]            [Телефонный номер. Шаблон - +\d{11}]
-    [&quot;email&quot;]                   [STRING]            [Электронная почта. Шаблон - <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f0dedbb0dede">[email&#160;protected]</a>+]
+    [&quot;email&quot;]                   [STRING]            [Электронная почта. Шаблон - <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a6888de68888">[email&#160;protected]</a>+]
 </code></pre>
 <blockquote></blockquote>
 <pre><code>[&quot;total&quot;]                       [STRUCT]    [R]     [Итог чека]
@@ -158,18 +158,20 @@
     [1215]                      [INT]               [сумма по чеку (БСО) предоплатой 
                                                     (зачётом аванса и (или) предыдущих платежей)]
     [1187]                      [STRING]            [место расчётов]
+    [1021]                      [STRING]            [наименование кассира]
+    [1203]                      [STRING]            [ИНН кассира]
 </code></pre>
-<h4 class="code-line" data-line-start=145 data-line-end=146><a id="_145"></a>Примеры</h4>
+<h4 class="code-line" data-line-start=147 data-line-end=148><a id="_147"></a>Примеры</h4>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="147" data-line-end="153">Тип операции: приход<br>
+<p class="has-line-data" data-line-start="149" data-line-end="155">Тип операции: приход<br>
 Тип оплаты: безналичными<br>
-Данные покупателя содержат тел. номер и email покупателя<br>
+Данные кассира содержат наименование и ИНН кассира<br>
 Тип товара: штучный<br>
 Тип НДС: без НДС<br>
 CНО: Общая</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="154" data-line-end="183" class="language-json">{
+<pre><code class="has-line-data" data-line-start="156" data-line-end="195" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -180,7 +182,55 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"f<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d6bfa5b1b996b2a4b3b7bbbdb7a5f8a4a3">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abcdc2d8ccc4ebcfd9cecac6c0cad885d9de">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">positions</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Штучный товар"</span></span>,
+      "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"COUNTABLE"</span></span>,
+      "<span class="hljs-attribute">tax</span>": <span class="hljs-value"><span class="hljs-string">"NDS_NO_TAX"</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1021</span></span>,
+        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Иванов Иван Иванович"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">tag</span>": <span class="hljs-value"><span class="hljs-number">1203</span></span>,
+        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"1234567890"</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"DEFAULT"</span>
+</span>}
+</code></pre>
+<hr>
+<blockquote>
+<p class="has-line-data" data-line-start="196" data-line-end="202">Тип операции: приход<br>
+Тип оплаты: безналичными<br>
+Данные покупателя содержат тел. номер и email покупателя<br>
+Тип товара: штучный<br>
+Тип НДС: без НДС<br>
+CНО: Общая</p>
+</blockquote>
+<pre><code class="has-line-data" data-line-start="203" data-line-end="232" class="language-json">{
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
+  "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"CASHLESS"</span></span>,
+      "<span class="hljs-attribute">sum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
+  "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+  "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9afcf3e9fdf5dafee8fffbf7f1fbe9b4e8ef">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -200,14 +250,14 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="184" data-line-end="190">Тип операции: расход<br>
+<p class="has-line-data" data-line-start="233" data-line-end="239">Тип операции: расход<br>
 Тип оплаты: наличными<br>
 Данные покупателя содержат тел. номер<br>
 Тип товара: весовой<br>
 Тип НДС: НДС 10%<br>
 CНО: Упрощённая доход</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="191" data-line-end="219" class="language-json">{
+<pre><code class="has-line-data" data-line-start="240" data-line-end="268" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"OUTFLOW"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -237,14 +287,14 @@ CНО: Упрощённая доход</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="220" data-line-end="226">Тип операции: возврат прихода<br>
+<p class="has-line-data" data-line-start="269" data-line-end="275">Тип операции: возврат прихода<br>
 Тип оплаты: аванс<br>
 Данные покупателя содержат email покупателя<br>
 Тип товара: обувь<br>
 Тип НДС: НДС 0%<br>
 CНО: Упрощенная доход минус расход</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="227" data-line-end="255" class="language-json">{
+<pre><code class="has-line-data" data-line-start="276" data-line-end="304" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"REFUND"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -255,7 +305,7 @@ CНО: Упрощенная доход минус расход</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2e48475d49416e4a5c4b4f43454f5d005c5b">[email&#160;protected]</a>"</span>
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5a3c33293d351a3e283f3b37313b2974282f">[email&#160;protected]</a>"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
@@ -274,14 +324,14 @@ CНО: Упрощенная доход минус расход</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="256" data-line-end="262">Тип операции: возврат расхода<br>
+<p class="has-line-data" data-line-start="305" data-line-end="311">Тип операции: возврат расхода<br>
 Тип оплаты: кредит<br>
 Данные покупателя содержат email покупателя<br>
 Тип товара: услуга<br>
 Тип НДС: НДС 20%<br>
 CНО: Единый налог на вмененный доход</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="263" data-line-end="291" class="language-json">{
+<pre><code class="has-line-data" data-line-start="312" data-line-end="340" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"OUTFLOW_REFUND"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -292,7 +342,7 @@ CНО: Единый налог на вмененный доход</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bddbd4cedad2fdd9cfd8dcd0d6dcce93cfc8">[email&#160;protected]</a>"</span>
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="26404f55414966425443474b4d4755085453">[email&#160;protected]</a>"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
@@ -311,14 +361,14 @@ CНО: Единый налог на вмененный доход</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="292" data-line-end="298">Тип операции: приход<br>
+<p class="has-line-data" data-line-start="341" data-line-end="347">Тип операции: приход<br>
 Тип оплаты: встречное предоставление<br>
 Данные покупателя содержат email покупателя<br>
 Тип товара: штучный<br>
 Тип НДС: НДС Расчетная 10%<br>
 CНО: Единый сельскохозяйственный налог</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="299" data-line-end="327" class="language-json">{
+<pre><code class="has-line-data" data-line-start="348" data-line-end="376" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -329,7 +379,7 @@ CНО: Единый сельскохозяйственный налог</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="54323d27333b1430263135393f35277a2621">[email&#160;protected]</a>"</span>
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="086e617b6f67486c7a6d696563697b267a7d">[email&#160;protected]</a>"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">200</span>
@@ -348,14 +398,14 @@ CНО: Единый сельскохозяйственный налог</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="328" data-line-end="334">Тип операции: приход<br>
+<p class="has-line-data" data-line-start="377" data-line-end="383">Тип операции: приход<br>
 Тип оплаты: безналичными<br>
 Данные покупателя содержат email покупателя<br>
 Тип товара: штучный, весовой, обувь, услуга<br>
 Тип НДС: НДС 10%, НДС 20%, НДС расчётная 10%, НДС расчётная 20%<br>
 CНО: Патентная система налогообложения</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="335" data-line-end="384" class="language-json">{
+<pre><code class="has-line-data" data-line-start="384" data-line-end="433" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -366,7 +416,7 @@ CНО: Патентная система налогообложения</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a1c7c8d2c6cee1c5d3c4c0cccac0d28fd3d4">[email&#160;protected]</a>"</span>
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5a3c33293d351a3e283f3b37313b2974282f">[email&#160;protected]</a>"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">priceSum</span>": <span class="hljs-value"><span class="hljs-number">800</span>
@@ -404,24 +454,24 @@ CНО: Патентная система налогообложения</p>
   "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"PATENT"</span>
 </span>}
 </code></pre>
-<h1 class="code-line" data-line-start=384 data-line-end=385><a id="__384"></a>Способы оплаты</h1>
+<h1 class="code-line" data-line-start=433 data-line-end=434><a id="__433"></a>Способы оплаты</h1>
 <pre><code>[CASH]              наличные
 [CASHLESS]          безналичные
 [PREPAID]           аванс
 [CREDIT]            кредит
 [CONSIDERATION]     встречное представление
 </code></pre>
-<h5 class="code-line" data-line-start=390 data-line-end=391><a id="_390"></a>Наличными</h5>
+<h5 class="code-line" data-line-start=439 data-line-end=440><a id="_439"></a>Наличными</h5>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="392" data-line-end="398">Тип операции: приход<br>
+<p class="has-line-data" data-line-start="441" data-line-end="447">Тип операции: приход<br>
 Тип оплаты: наличные<br>
 Данные покупателя содержат тел. номер и email покупателя<br>
 Тип товара: штучный<br>
 Тип НДС: без НДС<br>
 CНО: Общая</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="399" data-line-end="428" class="language-json">{
+<pre><code class="has-line-data" data-line-start="448" data-line-end="477" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -432,7 +482,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">102512</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b9dfd0caded6f9ddcbdcd8d4d2d8ca97cbcc">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a1c7c8d2c6cee1c5d3c4c0cccac0d28fd3d4">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -450,17 +500,17 @@ CНО: Общая</p>
   "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"DEFAULT"</span>
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=428 data-line-end=429><a id="_428"></a>Безналичными</h5>
+<h5 class="code-line" data-line-start=477 data-line-end=478><a id="_477"></a>Безналичными</h5>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="430" data-line-end="436">Тип операции: приход<br>
+<p class="has-line-data" data-line-start="479" data-line-end="485">Тип операции: приход<br>
 Тип оплаты: безналичные<br>
 Данные покупателя содержат тел. номер и email покупателя<br>
 Тип товара: штучный<br>
 Тип НДС: без НДС<br>
 CНО: Общая</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="437" data-line-end="466" class="language-json">{
+<pre><code class="has-line-data" data-line-start="486" data-line-end="515" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -471,7 +521,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">102512</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="70161903171f30140215111d1b11035e0205">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="11777862767e51756374707c7a70623f6364">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -489,17 +539,17 @@ CНО: Общая</p>
   "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"DEFAULT"</span>
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=466 data-line-end=467><a id="_466"></a>Аванс</h5>
+<h5 class="code-line" data-line-start=515 data-line-end=516><a id="_515"></a>Аванс</h5>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="468" data-line-end="474">Тип операции: приход<br>
+<p class="has-line-data" data-line-start="517" data-line-end="523">Тип операции: приход<br>
 Тип оплаты: аванс<br>
 Данные покупателя содержат тел. номер и email покупателя<br>
 Тип товара: штучный<br>
 Тип НДС: без НДС<br>
 CНО: Общая</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="475" data-line-end="504" class="language-json">{
+<pre><code class="has-line-data" data-line-start="524" data-line-end="553" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -510,7 +560,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">102512</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="89efe0faeee6c9edfbece8e4e2e8faa7fbfc">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ff99968c9890bf9b8d9a9e92949e8cd18d8a">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -528,19 +578,19 @@ CНО: Общая</p>
   "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"DEFAULT"</span>
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=504 data-line-end=505><a id="_504"></a>Примечание</h5>
-<p class="has-line-data" data-line-start="505" data-line-end="506">В случае превышения суммы аванса итоговой суммы по чеку согласно ФФД формируется дополнительная позиция “Превышение номинальной стоимости аванса (предоплаты) над продажной ценой товара”. Иные способы оплаты (в случае наличия игнорируются).</p>
-<h5 class="code-line" data-line-start=506 data-line-end=507><a id="_506"></a>Кредит</h5>
+<h5 class="code-line" data-line-start=553 data-line-end=554><a id="_553"></a>Примечание</h5>
+<p class="has-line-data" data-line-start="554" data-line-end="555">В случае превышения суммы аванса итоговой суммы по чеку согласно ФФД формируется дополнительная позиция “Превышение номинальной стоимости аванса (предоплаты) над продажной ценой товара”. Иные способы оплаты (в случае наличия игнорируются).</p>
+<h5 class="code-line" data-line-start=555 data-line-end=556><a id="_555"></a>Кредит</h5>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="508" data-line-end="514">Тип операции: приход<br>
+<p class="has-line-data" data-line-start="557" data-line-end="563">Тип операции: приход<br>
 Тип оплаты: кредит<br>
 Данные покупателя содержат тел. номер и email покупателя<br>
 Тип товара: штучный<br>
 Тип НДС: без НДС<br>
 CНО: Общая</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="515" data-line-end="544" class="language-json">{
+<pre><code class="has-line-data" data-line-start="564" data-line-end="593" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -551,7 +601,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">102512</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3c5a554f5b537c584e595d51575d4f124e49">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1b7d72687c745b7f697e7a76707a6835696e">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -569,17 +619,17 @@ CНО: Общая</p>
   "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"DEFAULT"</span>
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=544 data-line-end=545><a id="__544"></a>Встречное представление</h5>
+<h5 class="code-line" data-line-start=593 data-line-end=594><a id="__593"></a>Встречное представление</h5>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="546" data-line-end="552">Тип операции: приход<br>
+<p class="has-line-data" data-line-start="595" data-line-end="601">Тип операции: приход<br>
 Тип оплаты: встречное представление<br>
 Данные покупателя содержат тел. номер и email покупателя<br>
 Тип товара: штучный<br>
 Тип НДС: без НДС<br>
 CНО: Общая</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="553" data-line-end="582" class="language-json">{
+<pre><code class="has-line-data" data-line-start="602" data-line-end="631" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -590,7 +640,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">102512</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0f69667c68604f6b7d6a6e62646e7c217d7a">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="22444b51454d62465047434f4943510c5057">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -608,17 +658,17 @@ CНО: Общая</p>
   "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"DEFAULT"</span>
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=582 data-line-end=583><a id="__582"></a>Смешанная оплата</h5>
+<h5 class="code-line" data-line-start=631 data-line-end=632><a id="__631"></a>Смешанная оплата</h5>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="584" data-line-end="590">Тип операции: приход<br>
+<p class="has-line-data" data-line-start="633" data-line-end="639">Тип операции: приход<br>
 Тип оплаты: наличные, безналичные, аванс, кредит и встречное представление<br>
 Данные покупателя содержат тел. номер и email покупателя<br>
 Тип товара: штучный<br>
 Тип НДС: без НДС<br>
 CНО: Общая</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="591" data-line-end="636" class="language-json">{
+<pre><code class="has-line-data" data-line-start="640" data-line-end="685" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -645,7 +695,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">102512</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="07616e74606847637562666a6c6674297572">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a5c3ccd6c2cae5c1d7c0c4c8cec4d68bd7d0">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -663,25 +713,25 @@ CНО: Общая</p>
   "<span class="hljs-attribute">taxMode</span>": <span class="hljs-value"><span class="hljs-string">"DEFAULT"</span>
 </span>}
 </code></pre>
-<h5 class="code-line" data-line-start=636 data-line-end=637><a id="____636"></a>Примечание. Возможные ошибки выполнения.</h5>
+<h5 class="code-line" data-line-start=685 data-line-end=686><a id="____685"></a>Примечание. Возможные ошибки выполнения.</h5>
 <ul>
-<li class="has-line-data" data-line-start="637" data-line-end="638">
-<h6 class="code-line" data-line-start=637 data-line-end=638><a id="_________________637"></a>“Наличных средств недостаточно для сдачи” - итоговая сумма оплат превышает сумму чека, а также вносимых наличных средств.</h6>
+<li class="has-line-data" data-line-start="686" data-line-end="687">
+<h6 class="code-line" data-line-start=686 data-line-end=687><a id="_________________686"></a>“Наличных средств недостаточно для сдачи” - итоговая сумма оплат превышает сумму чека, а также вносимых наличных средств.</h6>
 </li>
-<li class="has-line-data" data-line-start="638" data-line-end="639">
-<h6 class="code-line" data-line-start=638 data-line-end=639><a id="___________________638"></a>“Сумма наличных средств равна сумме сдачи” - итоговая сумма оплат превышает сумму чека, а также равна вносимым наличным средствам.</h6>
+<li class="has-line-data" data-line-start="687" data-line-end="688">
+<h6 class="code-line" data-line-start=687 data-line-end=688><a id="___________________687"></a>“Сумма наличных средств равна сумме сдачи” - итоговая сумма оплат превышает сумму чека, а также равна вносимым наличным средствам.</h6>
 </li>
-<li class="has-line-data" data-line-start="639" data-line-end="640">
-<h6 class="code-line" data-line-start=639 data-line-end=640><a id="____________x_________639"></a>“Итоговой суммы оплат недостаточно для совершения оплаты по чеку. Необходимо внести дополнительно x коп” - итоговая сумма оплат меньше суммы чека.</h6>
+<li class="has-line-data" data-line-start="688" data-line-end="689">
+<h6 class="code-line" data-line-start=688 data-line-end=689><a id="____________x_________688"></a>“Итоговой суммы оплат недостаточно для совершения оплаты по чеку. Необходимо внести дополнительно x коп” - итоговая сумма оплат меньше суммы чека.</h6>
 </li>
-<li class="has-line-data" data-line-start="640" data-line-end="641">
-<h6 class="code-line" data-line-start=640 data-line-end=641><a id="________________640"></a>“Операция невозможна. Активируйте Дримкас Ключ” - для использования смешанных оплат необходимо приобрести подписку на Дримкас Ключ.</h6>
+<li class="has-line-data" data-line-start="689" data-line-end="690">
+<h6 class="code-line" data-line-start=689 data-line-end=690><a id="________________689"></a>“Операция невозможна. Активируйте Дримкас Ключ” - для использования смешанных оплат необходимо приобрести подписку на Дримкас Ключ.</h6>
 </li>
 </ul>
-<h6 class="code-line" data-line-start=641 data-line-end=642><a id="_1215_________________641"></a>Тег 1215 [сумма по чеку (БСО) предоплатой (зачётом аванса и (или) предыдущих платежей)] в случае наличия является приоритетным</h6>
+<h6 class="code-line" data-line-start=690 data-line-end=691><a id="_1215_________________690"></a>Тег 1215 [сумма по чеку (БСО) предоплатой (зачётом аванса и (или) предыдущих платежей)] в случае наличия является приоритетным</h6>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="643" data-line-end="648">Ниже представлены примеры json массивов с поддерживаемыми реквизитами (тэгами ФФД)<br>
+<p class="has-line-data" data-line-start="692" data-line-end="697">Ниже представлены примеры json массивов с поддерживаемыми реквизитами (тэгами ФФД)<br>
 Каждый пример содержит хотя бы один тэг ФФД<br>
 В чеке может присутствовать несолько тэгов ФФД<br>
 Тэги могут присутствовать как в теле чека, так и в теле конкретной позиции<br>
@@ -718,11 +768,11 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="678" data-line-end="681">Банковский агент (позиция)<br>
+<p class="has-line-data" data-line-start="727" data-line-end="730">Банковский агент (позиция)<br>
 Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171),<br>
 наименование поставщика (1225) - опционально.</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="682" data-line-end="753" class="language-json">{
+<pre><code class="has-line-data" data-line-start="731" data-line-end="802" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -733,7 +783,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="05636c76626a4561776064686e64762b7770">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dfb9b6acb8b09fbbadbabeb2b4beacf1adaa">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -795,11 +845,11 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="754" data-line-end="757">Банковский агент (чек)<br>
+<p class="has-line-data" data-line-start="803" data-line-end="806">Банковский агент (чек)<br>
 Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171),<br>
 наименование поставщика (1225) - опционально.</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="758" data-line-end="829" class="language-json">{
+<pre><code class="has-line-data" data-line-start="807" data-line-end="878" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -810,7 +860,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8aece3f9ede5caeef8efebe7e1ebf9a4f8ff">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="98fef1ebfff7d8fceafdf9f5f3f9ebb6eaed">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -872,11 +922,11 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="830" data-line-end="833">Банковский платёжный субагент (позиция)<br>
+<p class="has-line-data" data-line-start="879" data-line-end="882">Банковский платёжный субагент (позиция)<br>
 Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171),<br>
 наименование поставщика (1225) - опционально.</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="834" data-line-end="905" class="language-json">{
+<pre><code class="has-line-data" data-line-start="883" data-line-end="954" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -887,7 +937,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5a3c33293d351a3e283f3b37313b2974282f">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abcdc2d8ccc4ebcfd9cecac6c0cad885d9de">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -949,11 +999,11 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="906" data-line-end="909">Банковский платёжный субагент (чек)<br>
+<p class="has-line-data" data-line-start="955" data-line-end="958">Банковский платёжный субагент (чек)<br>
 Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171),<br>
 наименование поставщика (1225) - опционально.</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="910" data-line-end="981" class="language-json">{
+<pre><code class="has-line-data" data-line-start="959" data-line-end="1030" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -964,7 +1014,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="66000f15010926021403070b0d0715481413">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d7b1bea4b0b897b3a5b2b6babcb6a4f9a5a2">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1026,11 +1076,11 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="982" data-line-end="985">Платёжный агент (позиция)<br>
+<p class="has-line-data" data-line-start="1031" data-line-end="1034">Платёжный агент (позиция)<br>
 Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171),<br>
 наименование поставщика (1225) - опционально.</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="986" data-line-end="1041" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1035" data-line-end="1090" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1041,7 +1091,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5d3b342e3a321d392f383c30363c2e732f28">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="46202f35212906223423272b2d2735683433">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1087,11 +1137,11 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1042" data-line-end="1045">Платёжный агент (чек)<br>
+<p class="has-line-data" data-line-start="1091" data-line-end="1094">Платёжный агент (чек)<br>
 Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171),<br>
 наименование поставщика (1225) - опционально.</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1046" data-line-end="1101" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1095" data-line-end="1150" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1102,7 +1152,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="11777862767e51756374707c7a70623f6364">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="54323d27333b1430263135393f35277a2621">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1148,11 +1198,11 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1102" data-line-end="1105">Платёжный субагент (позиция)<br>
+<p class="has-line-data" data-line-start="1151" data-line-end="1154">Платёжный субагент (позиция)<br>
 Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171),<br>
 наименование поставщика (1225) - опционально.</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1106" data-line-end="1161" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1155" data-line-end="1210" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1163,7 +1213,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9afcf3e9fdf5dafee8fffbf7f1fbe9b4e8ef">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abcdc2d8ccc4ebcfd9cecac6c0cad885d9de">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1209,11 +1259,11 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1162" data-line-end="1165">Платёжный субагент (чек)<br>
+<p class="has-line-data" data-line-start="1211" data-line-end="1214">Платёжный субагент (чек)<br>
 Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171),<br>
 наименование поставщика (1225) - опционально.</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1166" data-line-end="1221" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1215" data-line-end="1270" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1270,11 +1320,11 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1222" data-line-end="1225">Поверенный (позиция)<br>
+<p class="has-line-data" data-line-start="1271" data-line-end="1274">Поверенный (позиция)<br>
 Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171),<br>
 наименование поставщика (1225) - опционально.</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1226" data-line-end="1273" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1275" data-line-end="1322" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1285,7 +1335,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fd9b948e9a92bd998f989c90969c8ed38f88">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="187e716b7f77587c6a7d797573796b366a6d">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1323,11 +1373,11 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1274" data-line-end="1277">Поверенный (чек)<br>
+<p class="has-line-data" data-line-start="1323" data-line-end="1326">Поверенный (чек)<br>
 Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171),<br>
 наименование поставщика (1225) - опционально.</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1278" data-line-end="1325" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1327" data-line-end="1374" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1338,7 +1388,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85e3ecf6e2eac5e1f7e0e4e8eee4f6abf7f0">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7c1a150f1b133c180e191d11171d0f520e09">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1376,11 +1426,11 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1326" data-line-end="1329">Комиссионер (позиция)<br>
+<p class="has-line-data" data-line-start="1375" data-line-end="1378">Комиссионер (позиция)<br>
 Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171),<br>
 наименование поставщика (1225) - опционально.</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1330" data-line-end="1377" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1379" data-line-end="1426" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1391,7 +1441,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="40262933272f00243225212d2b21336e3235">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bddbd4cedad2fdd9cfd8dcd0d6dcce93cfc8">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1429,11 +1479,11 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1378" data-line-end="1381">Комиссионер (чек)<br>
+<p class="has-line-data" data-line-start="1427" data-line-end="1430">Комиссионер (чек)<br>
 Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171),<br>
 наименование поставщика (1225) - опционально.</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1382" data-line-end="1429" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1431" data-line-end="1478" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1444,7 +1494,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="61070812060e21051304000c0a00124f1314">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="02646b71656d42667067636f6963712c7077">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1482,11 +1532,11 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1430" data-line-end="1433">Агент (позиция)<br>
+<p class="has-line-data" data-line-start="1479" data-line-end="1482">Агент (позиция)<br>
 Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171),<br>
 наименование поставщика (1225) - опционально.</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1434" data-line-end="1481" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1483" data-line-end="1530" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1497,7 +1547,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e98f809a8e86a98d9b8c888482889ac79b9c">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="70161903171f30140215111d1b11035e0205">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1535,11 +1585,11 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1482" data-line-end="1485">Агент (чек)<br>
+<p class="has-line-data" data-line-start="1531" data-line-end="1534">Агент (чек)<br>
 Примечание: необходимо также передать ИНН поставщика (1226) и тел. номер поставщика (1171),<br>
 наименование поставщика (1225) - опционально.</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1486" data-line-end="1533" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1535" data-line-end="1582" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1550,7 +1600,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4d2ddc7d3dbf4d0c6d1d5d9dfd5c79ac6c1">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7e18170d19113e1a0c1b1f13151f0d500c0b">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1588,9 +1638,9 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1534" data-line-end="1535">Акциз (позиция)</p>
+<p class="has-line-data" data-line-start="1583" data-line-end="1584">Акциз (позиция)</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1536" data-line-end="1579" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1585" data-line-end="1628" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1601,7 +1651,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="96f0ffe5f1f9d6f2e4f3f7fbfdf7e5b8e4e3">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="71171802161e31150314101c1a10025f0304">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1635,9 +1685,9 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1580" data-line-end="1581">Код товара (позиция)</p>
+<p class="has-line-data" data-line-start="1629" data-line-end="1630">Код товара (позиция)</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1582" data-line-end="1617" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1631" data-line-end="1666" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1648,7 +1698,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="492f203a2e26092d">[email&#160;protected]</a>reamkas.ru"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0e68677d69614e6a7c6b6f63656f7d207c7b">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1674,9 +1724,9 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1618" data-line-end="1619">Дополнительный реквизит предмета расчёта (позиция)</p>
+<p class="has-line-data" data-line-start="1667" data-line-end="1668">Дополнительный реквизит предмета расчёта (позиция)</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1620" data-line-end="1655" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1669" data-line-end="1704" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1687,7 +1737,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="45232c36222a0521372024282e24366b3730">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="caaca3b9ada58aaeb8afaba7a1abb9e4b8bf">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1713,9 +1763,9 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1656" data-line-end="1657">Дополнительный реквизит пользователя (чек)</p>
+<p class="has-line-data" data-line-start="1705" data-line-end="1706">Дополнительный реквизит пользователя (чек)</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1658" data-line-end="1697" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1707" data-line-end="1746" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1726,7 +1776,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9cfaf5effbf3dcf8eef9fdf1f7fdefb2eee9">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1f79766c78705f7b6d7a7e72747e6c316d6a">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1756,9 +1806,9 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1698" data-line-end="1699">Дополнительный реквизит чека (БСО) (чек)</p>
+<p class="has-line-data" data-line-start="1747" data-line-end="1748">Дополнительный реквизит чека (БСО) (чек)</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1700" data-line-end="1735" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1749" data-line-end="1784" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1769,7 +1819,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="43252a30242c03273126222e2822306d3136">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b5d3dcc6d2daf5d1c7d0d4d8ded4c69bc7c0">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1795,9 +1845,9 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1736" data-line-end="1737">Признак способа расчёта (предоплата 100 %)(позиция)</p>
+<p class="has-line-data" data-line-start="1785" data-line-end="1786">Признак способа расчёта (предоплата 100 %)(позиция)</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1738" data-line-end="1773" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1787" data-line-end="1822" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1808,7 +1858,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="36505f45515976524453575b5d5745184443">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="76101f05111936120413171b1d1705580403">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1834,9 +1884,9 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1774" data-line-end="1775">Признак способа расчёта (предоплата) (позиция)</p>
+<p class="has-line-data" data-line-start="1823" data-line-end="1824">Признак способа расчёта (предоплата) (позиция)</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1776" data-line-end="1815" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1825" data-line-end="1864" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1847,7 +1897,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="73151a00141c33170116121e1812005d0106">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b9dfd0caded6f9ddcbdcd8d4d2d8ca97cbcc">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1877,9 +1927,9 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1816" data-line-end="1817">Признак способа расчёта (аванс)(позиция)</p>
+<p class="has-line-data" data-line-start="1865" data-line-end="1866">Признак способа расчёта (аванс)(позиция)</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1818" data-line-end="1853" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1867" data-line-end="1902" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1890,7 +1940,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="71171802161e31150314101c1a10025f0304">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0f69667c68604f6b7d6a6e62646e7c217d7a">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1916,9 +1966,9 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1854" data-line-end="1855">Признак способа расчёта (полный расчёт)(позиция)</p>
+<p class="has-line-data" data-line-start="1903" data-line-end="1904">Признак способа расчёта (полный расчёт)(позиция)</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1856" data-line-end="1891" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1905" data-line-end="1940" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1929,7 +1979,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f3959a80949cb3978196929e989280dd8186">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9cfaf5effbf3dcf8eef9fdf1f7fdefb2eee9">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1955,9 +2005,9 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1892" data-line-end="1893">сумма по чеку (БСО) предоплатой (зачётом аванса и (или) предыдущих платежей) (чек)</p>
+<p class="has-line-data" data-line-start="1941" data-line-end="1942">сумма по чеку (БСО) предоплатой (зачётом аванса и (или) предыдущих платежей) (чек)</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1894" data-line-end="1929" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1943" data-line-end="1978" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -1968,7 +2018,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c7a1aeb4a0a887a3b5a2a6aaaca6b4e9b5b2">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c2a4abb1a5ad82a6b0a7a3afa9a3b1ecb0b7">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -1994,9 +2044,9 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1930" data-line-end="1931">Покупатель и ИНН покупателя (чек)</p>
+<p class="has-line-data" data-line-start="1979" data-line-end="1980">Покупатель и ИНН покупателя (чек)</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1932" data-line-end="1971" class="language-json">{
+<pre><code class="has-line-data" data-line-start="1981" data-line-end="2020" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -2007,7 +2057,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="13757a60747c53776176727e7872603d6166">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="690f001a0e06290d1b0c080402081a471b1c">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -2037,9 +2087,9 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="1972" data-line-end="1973">Признак предмета расчёта и наименование предмета расчёта (позиция)</p>
+<p class="has-line-data" data-line-start="2021" data-line-end="2022">Признак предмета расчёта и наименование предмета расчёта (позиция)</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="1974" data-line-end="2013" class="language-json">{
+<pre><code class="has-line-data" data-line-start="2023" data-line-end="2062" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -2050,7 +2100,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="adcbc4decac2edc9dfc8ccc0c6ccde83dfd8">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3e58574d59517e5a4c5b5f53555f4d104c4b">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -2079,9 +2129,9 @@ CНО: Общая</p>
 </span>}
 </code></pre>
 <blockquote>
-<p class="has-line-data" data-line-start="2013" data-line-end="2014">Место расчётов (чек)</p>
+<p class="has-line-data" data-line-start="2062" data-line-end="2063">Место расчётов (чек)</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="2015" data-line-end="2050" class="language-json">{
+<pre><code class="has-line-data" data-line-start="2064" data-line-end="2099" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -2092,7 +2142,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">47098</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="37515e44505877534552565a5c5644194542">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d3b5baa0b4bc93b7a1b6b2beb8b2a0fda1a6">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79121187552"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -2118,9 +2168,9 @@ CНО: Общая</p>
 </code></pre>
 <hr>
 <blockquote>
-<p class="has-line-data" data-line-start="2051" data-line-end="2052">Тестовый пример, включающий все поддерживаемые тэги ФФД в одном чеке</p>
+<p class="has-line-data" data-line-start="2100" data-line-end="2101">Тестовый пример, включающий все поддерживаемые тэги ФФД в одном чеке</p>
 </blockquote>
-<pre><code class="has-line-data" data-line-start="2053" data-line-end="2441" class="language-json">{
+<pre><code class="has-line-data" data-line-start="2102" data-line-end="2490" class="language-json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"SALE"</span></span>,
   "<span class="hljs-attribute">payments</span>": <span class="hljs-value">[
     {
@@ -2131,7 +2181,7 @@ CНО: Общая</p>
   "<span class="hljs-attribute">deviceId</span>": <span class="hljs-value"><span class="hljs-number">96666</span></span>,
   "<span class="hljs-attribute">timeout</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9cfaf5effbf3dcf8eef9fdf1f7fdefb2eee9">[email&#160;protected]</a>"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="680e011b0f07280c1a0d090503091b461a1d">[email&#160;protected]</a>"</span></span>,
     "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"+79101179441"</span>
   </span>}</span>,
   "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
@@ -2508,5 +2558,5 @@ CНО: Общая</p>
   ]
 </span>}
 </code></pre>
-<p class="has-line-data" data-line-start="2442" data-line-end="2443"><strong>Dreamkas, Saint-Petersburg, Russia 19.12.2019</strong></p>
+<p class="has-line-data" data-line-start="2491" data-line-end="2492"><strong>Dreamkas, Saint-Petersburg, Russia 19.12.2019</strong></p>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body></html>
